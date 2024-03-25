@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movie Details</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    #container {
+      width: 80%;
+      margin: 0 auto;
+      text-align: center;
+    }
+    #search-form {
+      margin-bottom: 20px;
+    }
+    #movie-details {
+      display: none;
+    }
+    @media screen and (max-width: 600px) {
+      #container {
+        padding: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <h1>Movie Details</h1>
+    <form id="search-form">
+      <label for="movie">Enter Movie Title:</label>
+      <input type="text" id="movie" name="movie">
+      <button type="submit">Search</button>
+    </form>
+    <div id="movie-details">
+      <h2 id="title"></h2>
+      <p><strong>Released:</strong> <span id="released"></span></p>
+      <p><strong>Genre:</strong> <span id="genre"></span></p>
+      <p><strong>Plot:</strong> <span id="plot"></span></p>
+      <img src="" alt="Movie Poster" id="poster">
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('search-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const movieTitle = document.getElementById('movie').value;
+      fetch(`https://www.omdbapi.com/?t=${encodeURIComponent(movieTitle)}&apikey=25106fab`)
+        .then(response => response.json())
+        .then(data => {
+          if (data.Response === "True") {
+            document.getElementById('title').textContent = data.Title;
+            document.getElementById('released').textContent = data.Released;
+            document.getElementById('genre').textContent = data.Genre;
+            document.getElementById('plot').textContent = data.Plot;
+            document.getElementById('poster').src = data.Poster;
+            document.getElementById('movie-details').style.display = 'block';
+          } else {
+            alert('Movie not found!');
+          }
+        })
+        .catch(error => {
+          console.error('Error fetching movie data:', error);
+          alert('An error occurred while fetching movie data. Please try again later.');
+        });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+
+<html>
+<head>
+<tile>
+</title>
+<style>
+.form{
+width:250px;
+height:380px;
+background:black;
+position:absolute;
+top:30%;
+left:40%;
+border-radius:10px;
+padding:25px;
+text-align:center;
+}
+.form h2{
+width:220px;
+font-family:sans-serif;
+color:#ff7200;
+font-size:22px;
+background-color:white;
+border-radius:10px;
+margin:2px;
+padding:8px;
+}
+.form input{
+width:240px;
+height:35px;
+background:transparent;
+border-bottom:1px solid #ff7200;
+border-top:none;
+border-right:none;
+border-left:none;
+color:#fff;
+font-size:15px;
+letter-spacing:1px;
+margin-top:30px;
+font-family:sans-serif;
+}
+.btn{
+width:240px;
+height:40px;
+background:#ff7200;
+border:none;
+margin-top:30px;
+font-size:18px;
+border-radius:10px;
+cursor:pointer;
+color:#fff;
+}
+.btn:hover{
+background:#fff;
+color:#ff7200;
+}
+.btn a{
+text-decoration:none;
+color:#000;
+font-weight:bold;
+}
+.form .link{
+color:#fff;;
+font-size:17px;
+padding-top:20px;
+text-align:center;
+}
+.form .link a{
+text-decoration:none;
+color:#ff7200;
+}
+.liw{
+padding-top:15px;
+padding-bottom:10px;
+text-align:center;
+}
+
+
+
+</style>
+</head>
+<body>
+    <form method="POST" action="/signupsub">
+<div class="form">
+<h2>Sign up</h2>
+<input type="email" name="email" placeholder="Enter email here">
+<input type="password" name="password" placeholder="Enter password here">
+<button class="btn"><a href="#">Sign up</a></button>
+<p class="link">Have an account<br>
+<a href="/login">Login</a></p>
+<p class="liw">Sign up</p>
+</div></form>
+</body>
+</html>
